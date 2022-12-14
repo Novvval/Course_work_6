@@ -4,7 +4,7 @@ from django.contrib.auth.models import BaseUserManager
 # TODO здесь должен быть менеджер для модели Юзера.
 # TODO Поищите эту информацию в рекомендациях к проекту
 class UserManager(BaseUserManager):
-    def create_user(self, email, first_name, last_name, phone, password=None):
+    def create_user(self, email, first_name, last_name, phone, password=None, role=None):
         if not email:
             raise ValueError('Users must have an email address')
         user = self.model(
@@ -20,7 +20,7 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, email, first_name, last_name, phone, password=None):
+    def create_superuser(self, email, first_name, last_name, phone, password=None, role=None):
         user = self.create_user(
             email,
             first_name=first_name,
