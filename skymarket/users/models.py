@@ -17,7 +17,8 @@ class User(AbstractBaseUser):
     last_name = models.CharField(max_length=100, verbose_name="Фамилия")
     phone = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    role = models.CharField(max_length=5, choices=UserRoles.choices, default=UserRoles.USER)
+    role = models.CharField(max_length=5, choices=UserRoles.choices)
+    is_active = models.BooleanField(default=False)
     image = models.ImageField(blank=True, null=True)
 
     USERNAME_FIELD = "email"

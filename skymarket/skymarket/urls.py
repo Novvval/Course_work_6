@@ -10,7 +10,8 @@ urlpatterns = [
     path("api/admin/", admin.site.urls),
     path("api/redoc-tasks/", include("redoc.urls")),
     path("auth/", include('djoser.urls')),
-    path("api/ad/", include("ads.urls")),
+    path("auth/", include("djoser.urls.jwt")),
+    path("", include("ads.urls")),
     path("", include("users.urls"))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

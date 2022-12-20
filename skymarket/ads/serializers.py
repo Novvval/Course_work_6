@@ -19,8 +19,8 @@ class AdSerializer(serializers.ModelSerializer):
 
 
 class AdDetailSerializer(serializers.ModelSerializer):
-    user = CurrentUserSerializer(many=True)
+    author = CurrentUserSerializer()
 
     class Meta:
         model = Ad
-        fields = ["id", "image", "description", "price", "title", "phone", "author_last_name", "author_first_name", "author_id"]
+        fields = ["id", "image", "description", "price", "title", "author"]
