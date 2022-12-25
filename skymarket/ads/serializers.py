@@ -19,8 +19,13 @@ class AdSerializer(serializers.ModelSerializer):
 
 
 class AdDetailSerializer(serializers.ModelSerializer):
-    author = CurrentUserSerializer()
+    # author = CurrentUserSerializer()
+    author_id = serializers.ReadOnlyField(source="author.id")
+    author_last_name = serializers.ReadOnlyField(source="author.last_name")
+    author_first_name = serializers.ReadOnlyField(source="author.first_name")
+    phone = serializers.ReadOnlyField(source="author.phone")
 
     class Meta:
         model = Ad
-        fields = ["id", "image", "description", "price", "title", "author"]
+        fields = ["id", "image", "description", "price", "title", "author_id", "author_first_name", "author_last_name",
+                  "phone"]
